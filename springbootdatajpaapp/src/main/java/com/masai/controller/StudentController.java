@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.entity.Student;
@@ -22,35 +23,69 @@ public class StudentController {
 
 	@Autowired
 	private StudentService sService;
-     
+	
+//	http://localhost:8088/student
 	@PostMapping("/student")
 	public ResponseEntity<Student> registerStudentHandler(@RequestBody Student student) {
 		Student registerStudent = sService.registerStudent(student);
 		return new ResponseEntity<Student>(registerStudent, HttpStatus.CREATED);
 	}
 	
-//	@GetMapping("/student/{r}")
-//	public ResponseEntity<Student> getStudentByIdHandler(@PathVariable("r") Integer rollNo){
-//		Student studentByRoll =  sService.getStudentById(rollNo);
-//		return new ResponseEntity<Student>(studentByRoll, HttpStatus.OK);
-//	}
+//	http://localhost:8088/student/2
+	@GetMapping("/student/{r}")
+	public ResponseEntity<Student> getStudentByIdHandler(@PathVariable("r") Integer rollNo){
+		Student studentByRoll =  sService.getStudentById(rollNo);
+		return new ResponseEntity<Student>(studentByRoll, HttpStatus.OK);
+	}
 	
-//	@GetMapping("/student")
-//	public ResponseEntity<List<Student>> getAllStudentDataListHandler(){
-//		List<Student> allStudent = sService.getAllStudentDataList();
-//		return new ResponseEntity<List<Student>>(allStudent, HttpStatus.OK);
-//	}
+//	http://localhost:8088/student
+	@GetMapping("/student")
+	public ResponseEntity<List<Student>> getAllStudentDataListHandler(){
+		List<Student> allStudent = sService.getAllStudentDataList();
+		return new ResponseEntity<List<Student>>(allStudent, HttpStatus.OK);
+	}
 	
-//	@DeleteMapping("/student/{r}")
-//	public ResponseEntity<Student> deleteStudentByRollNoHandler(@PathVariable("r") Integer rollNo){
-//		Student deletedStudent = sService.deleteStudentByRollNo(rollNo);
-//		return new ResponseEntity<Student>(deletedStudent, HttpStatus.OK);
-//	}
+//	http://localhost:8088/student/6
+	@DeleteMapping("/student/{r}")
+	public ResponseEntity<Student> deleteStudentByRollNoHandler(@PathVariable("r") Integer rollNo){
+		Student deletedStudent = sService.deleteStudentByRollNo(rollNo);
+		return new ResponseEntity<Student>(deletedStudent, HttpStatus.OK);
+	}
 	
-//	@PutMapping("/student")
-//	public ResponseEntity<Student> updateStudentDataHandler(@RequestBody Student student){
-//		Student updatedStudent = sService.updateStudentData(student);
-//		return new ResponseEntity<Student>(updatedStudent, HttpStatus.ACCEPTED);
-//	}
+//	http://localhost:8088/student
+	@PutMapping("/student")
+	public ResponseEntity<Student> updateStudentDataHandler(@RequestBody Student student){
+		Student updatedStudent = sService.updateStudentData(student);
+		return new ResponseEntity<Student>(updatedStudent, HttpStatus.ACCEPTED);
+	}
+	
+	
+//	http://localhost:8088/student/3?gmarks=50
+	@PutMapping("/student/{roll}")
+	public ResponseEntity<Student> updateStudentMarksByRollHandler(@PathVariable("roll") Integer rollNo, @RequestParam("gmarks") Integer gMarks){
+		Student updatedStudent = sService.updateStudentMarksByRoll(rollNo, gMarks);
+		return new ResponseEntity<Student>(updatedStudent,HttpStatus.ACCEPTED);
+	}
+	
+//	http://localhost:8088/getStudent/Bangalore
+	@GetMapping("/getStudent/{address}")
+	public ResponseEntity<List<Student>> getStudentByAdressHandler(@PathVariable("address") String address){
+		List<Student> students = sService.getStudentByAdress(address);
+		return new ResponseEntity<List<Student>>(students,HttpStatus.OK);
+	}
+	
+//	http://localhost:8088/getStudentMarks/900
+	@GetMapping("/getStudentMarks/{marks}")
+	public ResponseEntity<Student> getStudentByMarksHandler(@PathVariable("marks") Integer marks){
+		Student students = sService.getStudentByMarks(marks);
+		return new ResponseEntity<Student>(students, HttpStatus.OK);
+	}
+	
+//	http://localhost:8088/getStudentMarksLessThen/900
+	@GetMapping("/getStudentMarksLessThen/{marks}")
+	public ResponseEntity<List<Student>> getStudentByLessThanMarksHandler(@PathVariable("marks") Integer marks){
+		List<Student> students = sService.getStudentByLessThanMarks(marks);
+		return new ResponseEntity<List<Student>>(students,HttpStatus.OK);
+	}
 
 }
