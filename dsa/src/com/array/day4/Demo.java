@@ -14,6 +14,15 @@ public class Demo {
 		}
 	}
 	
+	public static void reverce1(int[] arr) {
+		int i = 0, j = arr.length-1;
+		while(i < j) {
+			swap(arr, i, j);
+			i++;
+			j--;
+		}
+	}
+	
 	public static void rotateArrayKTimes(int[] arr, int k) {
 		int n = arr.length;
 		k = k % n;
@@ -60,6 +69,26 @@ public class Demo {
 		}
 	}
 	
+	public static void squareNegitiveValue(int[] arr) {
+		int n = arr.length;
+		int left = 0, right = n-1, k = 0;
+		int[] ans = new int[n];
+		
+		while(left <= right) {
+			if(Math.abs(arr[left]) > Math.abs(arr[right])) {
+				ans[k++] = arr[left] * arr[left];
+				left++;
+			}else {
+				ans[k++] = arr[right] * arr[right];
+				right--;
+			}
+		}
+		reverce1(ans);
+		for(int i : ans) {
+			System.out.print(i+" ");
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 //		int[] arr = {1,2,3,4,5};
@@ -69,11 +98,14 @@ public class Demo {
 //		int[] arr = {1,0,1,0,1,0,1,0};
 //		zeroAndOne(arr);
 		
-		int[] arr = {4,2,9,3,1,2,5,6};
-		evenAndOdds(arr);
-		for(int i : arr) {
-			System.out.print(i+" ");
-		}
+//		int[] arr = {4,2,9,3,1,2,5,6};
+//		evenAndOdds(arr);
+		
+		int[] arr = {-10,-5,-2,1,6};
+		squareNegitiveValue(arr);
+//		for(int i : arr) {
+//			System.out.print(i+" ");
+//		}
 	}
 
 }
