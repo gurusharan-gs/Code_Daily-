@@ -95,7 +95,7 @@ public class StudentController {
 		return new ResponseEntity<String>(studentNmae,HttpStatus.OK);
 	}
 	
-	
+//	http://localhost:8088/getStudenNameAndMarks/Bangalore
 	@GetMapping("/getStudenNameAndMarks/{adrress}")
 	public ResponseEntity<List<String>> getStudentNameAndMarksByAddressHandler(@PathVariable("adrress") String adrress){
 		List<String> result = sService.getStudentNameAndMarksByAddress(adrress);
