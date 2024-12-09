@@ -102,6 +102,26 @@ public class StudentServiceImp implements StudentService {
 		return students;
 	}
 
+	@Override
+	public String getStudentNameByRoll(Integer rollNo) throws StudentException {
+		String name = sRepository.getStudentNameByRoll(rollNo);
+		if(name != null) {
+			return name;
+		}else {
+			throw new StudentException("No found student name with this : "+rollNo);
+		}
+	}
+
+	@Override
+	public List<String> getStudentNameAndMarksByAddress(String address) throws StudentException {
+		List<String> result = sRepository.getStudentNameAndMarksByAddress(address);
+		if(result.isEmpty()) {
+			throw new StudentException("No found student details with this : "+address);
+		}else {
+			return result;
+		}
+	}
+
 
 
 }

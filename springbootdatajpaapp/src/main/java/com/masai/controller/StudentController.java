@@ -87,5 +87,19 @@ public class StudentController {
 		List<Student> students = sService.getStudentByLessThanMarks(marks);
 		return new ResponseEntity<List<Student>>(students,HttpStatus.OK);
 	}
+	
+//	http://localhost:8088/getStudentName/2
+	@GetMapping("/getStudentName/{roll}")
+	public ResponseEntity<String> getStudentNameByRollHandler(@PathVariable("roll") Integer rollNo){
+		String studentNmae = sService.getStudentNameByRoll(rollNo);
+		return new ResponseEntity<String>(studentNmae,HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/getStudenNameAndMarks/{adrress}")
+	public ResponseEntity<List<String>> getStudentNameAndMarksByAddressHandler(@PathVariable("adrress") String adrress){
+		List<String> result = sService.getStudentNameAndMarksByAddress(adrress);
+		return new ResponseEntity<List<String>>(result,HttpStatus.OK);
+	}
 
 }

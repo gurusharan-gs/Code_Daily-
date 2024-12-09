@@ -25,5 +25,9 @@ public interface StudentService {
 	public Student getStudentByMarks(Integer marks)throws StudentException;
 	
 	public List<Student>  getStudentByLessThanMarks(Integer marks)throws StudentException;
+	
+	public String getStudentNameByRoll(Integer rollNo)throws StudentException;
+	
+	public List<String> getStudentNameAndMarksByAddress(String address)throws StudentException;
 
 }
