@@ -73,8 +73,29 @@ select avg(marks) from student;
 select city from student group by city;
 select city, count(rollno) from student group by city;
 
+select marks from student group by marks;
 
+select city, count(rollno) from student group by city;
+select city, count(marks) from student group by city having max(marks) > 80;
 
+-- ALTER-- 
+ALTER TABLE student ADD COLUMN age INT;
+ALTER TABLE student DROP COLUMN age;
+select * from student;
+
+ALTER TABLE student ADD COLUMN age INT NOT NULL DEFAULT 19;
+
+ALTER TABLE student MODIFY COLUMN age VARCHAR(2);
+
+ALTER TABLE student CHANGE age std_age INT;
+ALTER TABLE student DROP COLUMN std_age;
+
+ALTER TABLE student RENAME TO std;
+ALTER TABLE std RENAME TO student;
+
+ALTER TABLE student CHANGE name full_name VARCHAR(50);
+
+DELETE FROM student WHERE marks < 80;
 
 
 
