@@ -22,30 +22,12 @@ public class SumoF2dArray {
 
 	}
 
-	public static void sumOfMatrix2dArrays(int[][] a, int[][] b) {
-		int n1 = a.length;
-		int n2 = b.length;
-		int[][] mul = new int[n1][n2];
 
-		for (int i = 0; i < n1; i++) {
-			for (int j = 0; j < n2; j++) {
-				for (int k = 0; k < n2; k++) {
-					mul[i][j] += a[i][k] * b[k][j];
-				}
-			}
-		}
-
-		for (int i = 0; i < mul.length; i++) {
-			for (int j = 0; j < mul.length; j++) {
-				System.out.print(mul[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
 
 	public static void main(String[] args) {
 		int[][] a = { 
 					{ 1, 2, 3 }, 
+					{ 5, 6, 3 },
 					{ 2, 4, 5 } 
 				};
 		
@@ -56,8 +38,8 @@ public class SumoF2dArray {
 					
 				};
 
-//		sumoF2dArrays(a, b);
-		sumOfMatrix2dArrays(a, b);
+		sumoF2dArrays(a, b);
+		
 	}
 
 }
