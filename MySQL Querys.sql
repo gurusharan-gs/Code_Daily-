@@ -2,13 +2,7 @@ USE college;
 show tables;
 drop table student;
 
-create table student(
-rollno int primary key,
-name varchar(50),
-marks int not null,
-grade varchar(1),
-city varchar(50)
-);
+
 
 desc student;
 
@@ -100,10 +94,141 @@ DELETE FROM student WHERE marks < 80;
 
 
 
+CREATE TABLE student (
+    rollno INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    marks INT NOT NULL,
+    grade VARCHAR(1),
+    city VARCHAR(50)
+);
+
+ALTER TABLE student MODIFY rollno INT AUTO_INCREMENT;
+
+SELECT grade, AVG(marks) AS average_marks
+FROM student
+GROUP BY grade;
+
+select * from student;
+
+select grade, avg(marks) as avg_marks from student group by grade;
+select grade, count(grade) as std_grade from student group by grade;
+select grade, count(*) as std_grade from student group by grade;
+
+select city, max(marks) as hight_marks from student group by city;
+
+select city, sum(marks) as sum_marks from student group by city;
+
+select grade, city, sum(marks) as total_marks from student group by grade, city;
+
+select city, count(*) from student group by city;
+
+select  grade, min(marks) as min_marks from student group by grade;
+
+select count(distinct city) as unique_city from student;
 
 
+CREATE TABLE student (
+    rollno INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    marks INT NOT NULL,
+    grade VARCHAR(1),
+    city VARCHAR(50)
+);
 
 
+INSERT INTO student (name, marks, grade, city) 
+VALUES 
+    ('Emma Watson', 78, 'B', 'Boston'),
+    ('Michael Scott', 60, 'C', 'Scranton'),
+    ('Dwight Schrute', 95, 'A', 'Scranton'),
+    ('Pam Beesly', 88, 'A', 'Philadelphia'),
+    ('Jim Halpert', 83, 'B', 'Philadelphia'),
+    ('Angela Martin', 91, 'A', 'Scranton'),
+    ('Kevin Malone', 55, 'D', 'Scranton'),
+    ('Oscar Martinez', 86, 'A', 'Scranton'),
+    ('Ryan Howard', 65, 'C', 'New York'),
+    ('Kelly Kapoor', 72, 'B', 'New York');
+
+SELECT * from student;
+SELECT city, name, marks FROM student;
+
+UPDATE student SET marks = 88 WHERE rollno = 1;
+UPDATE student SET marks = 20 WHERE rollno = 16;
+UPDATE student SET grade = "F" WHERE rollno = 16;
+
+SELECT * FROM student WHERE city = "New York";
+SELECT * FROM student WHERE grade = "A";
+SELECT * FROM student WHERE marks > 80;
+SELECT * FROM student WHERE marks < 80;
+SELECT * FROM student WHERE marks > 70 AND marks < 90;
+
+SELECT * FROM student WHERE marks < 80;
+SELECT * FROM student ORDER BY marks ASC;
+SELECT * FROM student ORDER BY marks DESC;
+
+SELECT * FROM student ORDER BY name ASC;
+SELECT * FROM student ORDER BY name DESC;
+
+SELECT city, COUNT(*) as student_count FROM student GROUP BY city;
+SELECT AVG(marks) as avg_marks FROM student;
+
+select * from student where grade = "A";
+select grade, count(*) as total_grade_A from student group by grade having grade = "A";
+
+select * from student where city = "Scranton"; 
+select * from student where marks > 80;
+
+select * from student where grade = "A" AND city = "Philadelphia";
+select * from student where name like "j%";
+
+select * from student where marks between 60 AND 80;
+
+select * from student where rollno between 1 AND 5;
+
+select * from student where marks between 50 AND 70 AND city = "Scranton";
+
+use college;
+show tables;
+select * from student;
+
+select * from student where name like "a%";
+select * from student where name like "r%";
+select * from student where name like "%n";
+select * from student where name like "%ma%";
+select * from student where name like "_a%";
+select * from student where not name like "m%";
+
+select * from student order by marks;
+select * from student order by marks desc;
+
+select * from student order by grade;
+select * from student order by grade desc;
+
+select * from student order by city asc;
+select * from student order by city desc;
 
 
+select name, count(*) from student group by name;
+select count(*) as total_count from student;
+select count(city) as total_city from student;
 
+select sum(marks) as total_sum from student;
+
+select avg(marks) as total_avg from student;
+
+select max(marks) as hight_marks from student;
+
+select min(marks) as minimum_marks from student;
+
+select name, sum(marks) from student group by name;
+
+select marks  from student group by marks having marks > 80;
+
+select grade, count(*) as student_count from student group by grade;
+
+select city, avg(marks) as avg_marks from student group by city;
+
+select grade, sum(marks) as total_marks from student group by grade order by grade;
+
+select city, max(marks) as hight_marks from student group by city;
+ 

@@ -1,5 +1,8 @@
 package com.array;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Practices {
 	
 	// 1
@@ -72,6 +75,19 @@ public class Practices {
 			 arr[nonZero++] = 0;
 		 }
 	 }
+	 
+	 // 6
+	 
+	 public static int findDuplicate(int[] arr){
+		 Set<Integer> set = new HashSet<>();
+		 for(int num : arr) {
+			 if(set.contains(num)) {
+				 return num;
+			 }
+			 set.add(num);
+		 }
+		 return -1;
+	 }
 	
 	public static void main(String[] args) {
 //		  finding min value
@@ -96,12 +112,15 @@ public class Practices {
 //      System.out.println("Occurrences of " + element + ": " + countOccurrences(arr, element));
 		
 		
-        int[] arr = {0, 1, 2, 0, 3, 4};
-        moveZeros(arr);
-        System.out.print("Array after moving zeros: ");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
+//        int[] arr = {0, 1, 2, 0, 3, 4};
+//        moveZeros(arr);
+//        System.out.print("Array after moving zeros: ");
+//        for (int num : arr) {
+//            System.out.print(num + " ");
+//        }
+		
+        int[] arr = {1, 2, 3, 4, 5, 2};
+        System.out.println("First duplicate: " + findDuplicate(arr));
 		
 		
 	}
