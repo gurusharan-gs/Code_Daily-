@@ -1,5 +1,6 @@
 USE college;
 show tables;
+
 drop table student;
 
 
@@ -231,4 +232,54 @@ select city, avg(marks) as avg_marks from student group by city;
 select grade, sum(marks) as total_marks from student group by grade order by grade;
 
 select city, max(marks) as hight_marks from student group by city;
+
+select city, min(marks) as minimum_marks from student group by city;
  
+ select grade, sum(marks) as total_marks from student group by grade having total_marks > 80;
+ 
+ 
+CREATE TABLE employee (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone_number VARCHAR(15),
+    hire_date DATE NOT NULL,
+    job_title VARCHAR(50) NOT NULL,
+    salary DECIMAL(10, 2)
+);
+
+INSERT INTO employee (first_name, last_name, email, phone_number, hire_date, job_title, salary)
+VALUES
+('John', 'Doe', 'john.doe@example.com', '1234567890', '2023-01-15', 'Software Engineer', 75000.00),
+('Jane', 'Smith', 'jane.smith@example.com', '9876543210', '2022-10-01', 'Product Manager', 95000.00),
+('Mike', 'Brown', 'mike.brown@example.com', NULL, '2021-05-20', 'Data Analyst', 65000.00),
+('Emily', 'Davis', 'emily.davis@example.com', '4561237890', '2020-03-10', 'HR Specialist', 60000.00);
+
+select * from employee;
+
+select * from employee where job_title = "Software Engineer";
+
+select * from employee where salary > 70000;
+
+select * from employee where hire_date > "2022-01-01";
+
+UPDATE employee SET salary = 80000.00 WHERE employee_id = 4;
+
+delete from employee where employee_id = 3;
+
+INSERT INTO employee (first_name, last_name, email, phone_number, hire_date, job_title, salary)
+VALUES
+('Sophia', 'Taylor', 'sophia.taylor@example.com', '7890123456', '2019-07-01', 'UI/UX Designer', 72000.00),
+('Liam', 'Wilson', 'liam.wilson@example.com', NULL, '2021-11-15', 'DevOps Engineer', 88000.00),
+('Olivia', 'Martinez', 'olivia.martinez@example.com', '3216549870', '2018-12-20', 'Technical Lead', 105000.00),
+('Ethan', 'Johnson', 'ethan.johnson@example.com', '9873216540', '2023-03-05', 'Backend Developer', 67000.00),
+('Ava', 'Lopez', 'ava.lopez@example.com', '6547893210', '2020-08-10', 'Marketing Manager', 80000.00),
+('Mason', 'Clark', 'mason.clark@example.com', '1237896540', '2022-06-25', 'Frontend Developer', 69000.00);
+
+select * from employee;
+update employee set salary = 100000 where employee_id = 8;
+
+select count(*) as total_employees from employee;
+
+
