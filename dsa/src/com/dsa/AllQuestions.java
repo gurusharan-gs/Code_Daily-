@@ -50,11 +50,60 @@ public class AllQuestions {
 		reverce(arr, 0, n-1);
 	}
 	
+	public static void movesZeros(int[] arr) {
+		
+		int count = 0;
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i] != 0) {
+				arr[count++] = arr[i];
+			}
+		}
+		while(count < arr.length) {
+			arr[count++] = 0;
+		}
+	}
+	
+	public static void swap(int[] arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	public static void zeroAndone(int[] arr) {
+		int left = 0, right = arr.length-1;
+		
+		while(left < right) {
+			if(arr[left] == 1 && arr[right] == 0) {
+				swap(arr, left, right);
+				left++;
+				right--;
+			}
+			
+			if(arr[left] == 0) {
+				left++;
+			}
+			if(arr[right] == 1) {
+				right--;
+			}
+		}
+	}
+	
+	
 	
 	public static void main(String[] args) {
 		
-		int[] arr = {1,2,3,4,5};
-		int x = 4;
+		int[] arr = {0,1,0,1,0,0,1,0};
+		zeroAndone(arr);
+		for(int ans : arr) {
+		System.out.print(ans+" ");
+	}
+		
+		
+		
+		
+//		movesZeros(arr);
+		
+		
+//		int x = 4;
 //		System.out.println(findOccurence(arr, x));
 //		System.out.println(findUniqeValue(arr));
 		
@@ -63,10 +112,15 @@ public class AllQuestions {
 //			System.out.print(ans+" ");
 //		}
 		
-		rotateArrayInPlace(arr, x);
-			for(int ans : arr) {
-			System.out.print(ans+" ");
-		}
+//		rotateArrayInPlace(arr, x);
+//			for(int ans : arr) {
+//			System.out.print(ans+" ");
+//		}
+		
+		
+		
+		
+		
 	}
 
 }
