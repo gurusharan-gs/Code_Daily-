@@ -35,10 +35,10 @@ public class Polymorphismqsn {
 	public static void main(String[] args) {
 		
 		CreditCard creditCard = new CreditCard();
-		creditCard.pay(20.00);
+//		creditCard.pay(20.00);
 		
 		PayPal payPal = new PayPal();
-		payPal.pay(50.5);
+//		payPal.pay(50.5);
 		
 		UPI upi = new UPI();
 		upi.pay(40.6);

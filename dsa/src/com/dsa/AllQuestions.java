@@ -87,19 +87,31 @@ public class AllQuestions {
 		}
 	}
 	
+	public static boolean isSorted(int[] arr) {
+		for(int i=1; i<arr.length; i++) {
+			if(arr[i] < arr[i-1]) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	
 	public static void main(String[] args) {
 		
-		int[] arr = {0,1,0,1,0,0,1,0};
-		zeroAndone(arr);
-		for(int ans : arr) {
-		System.out.print(ans+" ");
-	}
+		int[] arr = {6,2,3,4,5};
+		
+		System.out.println(isSorted(arr));
 		
 		
 		
+//		zeroAndone(arr);
+//		for(int ans : arr) {
+//		System.out.print(ans+" ");
+//	}
 		
+		
+			
 //		movesZeros(arr);
 		
 		
