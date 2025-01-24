@@ -27,6 +27,23 @@ public class Main {
 	public static void main(String[] args) {
 		int x = 16;
 		System.out.println(sqrt(x));
+		
+		int a = 122;
+		System.out.println(isPalindrome(a));
 	}
-
+	
+	public static boolean isPalindrome(int x) {
+		String str = Integer.toString(x);
+		int left = 0;
+		int right = str.length()-1;
+		
+		while(left < right) {
+			if(str.charAt(left) != str.charAt(right)) { 
+				return false;
+			}
+			left++;
+			right--;
+		}
+		return true;
+    }
 }
