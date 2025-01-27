@@ -11,5 +11,10 @@ public interface BookService {
 	
 	public List<Book> getAllBooks()throws BookException;
 	
+	public Book deleteBook(Integer id)throws BookException;
+	
+	public Book getBookById(Integer id)throws BookException;
+	
+	
 	
 }

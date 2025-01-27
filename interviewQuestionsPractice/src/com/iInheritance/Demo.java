@@ -12,7 +12,7 @@ class Dog {
 	}
 }
 
-class Animal extends Cat, Dog{
+class Animal extends Cat{
 	
 }
 
