@@ -12,7 +12,7 @@ public class Problems {
 			freMap.put(c, freMap.getOrDefault(c, 0) + 1);
 		}
 
-		char maxChar = 0;
+		char maxChar = 0;6
 		int maxValue = 0;
 
 		for (Map.Entry<Character, Integer> entry : freMap.entrySet()) {
